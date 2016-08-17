@@ -12,17 +12,22 @@
 
 import gzip
 import types
+import pprint
+import json
 
-with gzip.open("jawiki-country.json.gz", "rt", encoding='utf-8') as f:
+#with open("jawiki-country.json", "rt", encoding='utf-8') as f:
+#with open("jawiki-country.json", "r") as f:
+with open("jawiki-country.json", "r", encoding='utf-8') as f:
 	reader = f.readlines()
 
-for data in reader:
-	# print(type(reader[0]))
-	# print(data.decode('utf-8'))
-	# print(data.decode("euc-jp"))
-	# print(data.encode("euc-jp"))
-	# print(data.encode("shift-jis"))
-	# print(data)	
-	print(data.encode("cp932"))	
+#for i, data in enumerate(reader):
+#	print(data)
 
-
+for i, data in enumerate(reader):
+#for i, data in enumerate(reader):
+	if json.loads(data)["title"]=="イギリス":
+		pprint.pprint(json.dumps(data, ensure_ascii=False))
+		#print(json.dumps(data))
+#if data["title"]=="イギリス":
+	#	print(data)
+	#	print(i)
