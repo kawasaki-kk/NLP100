@@ -15,6 +15,7 @@ import types
 import pprint
 import json
 
+# open json file
 #with open("jawiki-country.json", "rt", encoding='utf-8') as f:
 #with open("jawiki-country.json", "r") as f:
 with open("jawiki-country.json", "r", encoding='utf-8') as f:
@@ -23,11 +24,19 @@ with open("jawiki-country.json", "r", encoding='utf-8') as f:
 #for i, data in enumerate(reader):
 #	print(data)
 
+# show
+output=[]
 for i, data in enumerate(reader):
-#for i, data in enumerate(reader):
+	# show and stack England data
 	if json.loads(data)["title"]=="イギリス":
+		#print
 		pprint.pprint(json.dumps(data, ensure_ascii=False))
-		#print(json.dumps(data))
-#if data["title"]=="イギリス":
-	#	print(data)
-	#	print(i)
+		# stack data
+		print("\n\n\n")
+		output.append(data)
+		print(output)
+# output data
+with open('jawiki-country_England.json', 'w') as f:
+	#map(f.write, output) # 書き込まれない。謎。   
+	[f.write(line) for line in output] 
+
