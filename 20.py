@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 # Wikipediaの記事を以下のフォーマットで書き出したファイルjawiki-country.json.gzがある．
 
@@ -17,26 +17,27 @@ import json
 
 # open json file
 #with open("jawiki-country.json", "rt", encoding='utf-8') as f:
-#with open("jawiki-country.json", "r") as f:
-with open("jawiki-country.json", "r", encoding='utf-8') as f:
+with open("jawiki-country.json", "r") as f:
+#with open("jawiki-country.json", "r", encoding='utf-8') as f:
 	reader = f.readlines()
 
 #for i, data in enumerate(reader):
 #	print(data)
 
 # show
-output=[]
-for i, data in enumerate(reader):
+outputs=[]
+for i, data_json in enumerate(reader):
+	data_dict = json.loads(data_json)
 	# show and stack England data
-	if json.loads(data)["title"]=="イギリス":
-		#print
-		pprint.pprint(json.dumps(data, ensure_ascii=False))
+	#if json.loads(data, encoding='utf-8')["title"]=="イギリス":
+	if data_dict["title"]=="イギリス":
+		print(data_dict["text"])
 		# stack data
-		print("\n\n\n")
-		output.append(data)
-		print(output)
+		outputs.append(data_dict)
 # output data
 with open('jawiki-country_England.json', 'w') as f:
 	#map(f.write, output) # 書き込まれない。謎。   
-	[f.write(line) for line in output] 
+	[json.dump(output, f, sort_keys=True, indent=4, ensure_ascii=False) for output in outputs]
+	#[json.dumps(output, sort_keys=True, indent=4, ensure_ascii=False) for output in outputs]
+# f.write(line) for line in output] 
 
