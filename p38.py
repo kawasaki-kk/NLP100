@@ -22,6 +22,7 @@ def plot_Histgram(words_counter):
 	# num of all apeared words
 	num_words = sum(words_counter.values())
 
+	print(sorted(words_counter.values()))
 	print(Counter(list(words_counter.values())))
 	# x-axis
 	# freq = np.array([words_counter.values()[i] / num_words for i in range(len(words_counter))])
@@ -30,8 +31,8 @@ def plot_Histgram(words_counter):
 	plt.xlabel("Appearance frequency!!!")
 	plt.ylabel("Frequency of appearance frequency")
 	# plot
-	# plt.hist(freq, bins = 50, normed = True)
-	plt.hist(freq, bins = 242, range=(0,100))
+	plt.hist(freq, bins = 242, normed = True)
+	#plt.hist(freq, bins = 242, range=(0,100))
 	# save as png
 	plt.savefig("Histgram_of_Appearance_Frequency.png")
 
