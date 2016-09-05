@@ -44,7 +44,8 @@ def plot_Histgram(words_counter):
 
 	# x-axis
 	# freq = np.array([words_counter.values()[i] / num_words for i in range(len(words_counter))])
-	freq = np.array(list(words_counter.values()))/num_words
+	freq = list(sorted(words_counter.values()))
+	# print(freq)
 	plt.xlabel("Appearance frequency")
 	plt.ylabel("Frequency of appearance frequency")
 	# plot
