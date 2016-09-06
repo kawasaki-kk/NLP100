@@ -27,7 +27,8 @@ def plot_Histgram(words_counter):
 	plt.xlabel("Counts of words appearance")
 	plt.ylabel("Frequency of counts")
 	# plot
-	plt.hist(freq, bins = 20, normed = True)
+	# plt.hist(freq, bins = 20, normed = True)
+	plt.hist(freq, bins = 20)
 	# save as png
 	plt.savefig("Histgram_of_Appearance_Frequency.png")
 
