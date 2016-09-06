@@ -6,6 +6,7 @@
 
 import re
 from collections import Counter
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -13,24 +14,9 @@ from matplotlib.font_manager import FontProperties
 
 import numpy as np
 from pprint import pprint
-from p30 import load_text, make_MorphemeDict, make_DictList
-
+from p30 import load_text, make_DictList
 from p36 import count_ApearedWords
 
-
-def plot_Histgram(words_counter):
-	# print(sorted(words_counter.values()))
-	# print(Counter(list(words_counter.values())))
-	# x-axis
-	freq = list(sorted(words_counter.values()))
-	# print(freq)
-	plt.xlabel("Word appearance")
-	plt.ylabel("Number of times of word appearance")
-	# plot
-	# plt.hist(freq, bins = 20, normed = True)
-	plt.hist(freq, bins = 20, range = (0, 100))
-	# save as png
-	plt.savefig("Histgram_of_Appearance_Frequency.png")
 
 def plot_DoubleLog(words_counter):
 	# print(sorted(words_counter.values()))
@@ -50,7 +36,6 @@ if __name__ == "__main__":
 	
 	words_counter = count_ApearedWords(dictlist)
 
-#	plot_Histgram(words_counter)
 	plot_DoubleLog(words_counter)	
 
 	plt.show()
