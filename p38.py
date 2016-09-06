@@ -24,7 +24,7 @@ def plot_Histgram(words_counter):
 	# x-axis
 	freq = list(sorted(words_counter.values()))
 	# print(freq)
-	plt.xlabel("Counts of words appearance")
+	plt.xlabel("Counts of words appearance!!!!!!!!!!!!!!!1")
 	plt.ylabel("Frequency of counts!!!")
 	# plot
 	# plt.hist(freq, bins = 20, normed = True)
