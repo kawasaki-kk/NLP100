@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# 38. ヒストグラム
-# 単語の出現頻度のヒストグラム（横軸に出現頻度，縦軸に出現頻度をとる単語の種類数を棒グラフで表したもの）を描け．
+# 39. Zipfの法則
+# 単語の出現頻度順位を横軸，その出現頻度を縦軸として，両対数グラフをプロットせよ．
 
 
 import re
@@ -32,6 +32,17 @@ def plot_Histgram(words_counter):
 	# save as png
 	plt.savefig("Histgram_of_Appearance_Frequency.png")
 
+def plot_DoubleLog(words_counter):
+	# print(sorted(words_counter.values()))
+	# print(Counter(list(words_counter.values())))
+	counts_of_times_of_word_appearance = sorted(Counter(list(words_counter.values())).keys(), reverse = True)
+	# print(counts_of_times_of_word_appearance)
+	plt.plot(counts_of_times_of_word_appearance, range(len(counts_of_times_of_word_appearance)))
+	plt.xlabel("Ranking")
+	plt.ylabel("Appearance fraquency")
+	plt.xscale("log")
+	plt.yscale("log")
+	plt.savefig("Zipf_lows.png")
 
 if __name__ == "__main__":
 	# make list of dictionaries of norpheme
@@ -39,6 +50,7 @@ if __name__ == "__main__":
 	
 	words_counter = count_ApearedWords(dictlist)
 
-	plot_Histgram(words_counter)
+#	plot_Histgram(words_counter)
+	plot_DoubleLog(words_counter)	
 
 	plt.show()
